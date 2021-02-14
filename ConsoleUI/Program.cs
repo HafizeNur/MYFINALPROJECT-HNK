@@ -11,6 +11,15 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //CategoryTest();
+            //IoC
+             ProductTest();
+
+
+        }
+
+        private static void CategoryTest()
+        {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
             Console.WriteLine("Tüm Kategoriler");
@@ -18,33 +27,36 @@ namespace ConsoleUI
             {
                 Console.WriteLine(category.CategoryName);
             }
-
-            // ProductTest(productManager);
-
-
         }
 
         private static void ProductTest()
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            Console.WriteLine("Tüm Ürünler");
-            foreach (var product in productManager.GetAll())
+            Console.WriteLine("Ürün Detayları");
+            foreach (var product in productManager.GetProductDetails())
             {
-                Console.WriteLine(product.ProductName);
+                Console.WriteLine(product.ProductName + "/" + product.CategoryName);
             }
 
-            Console.WriteLine("CategoryId=2 olan Ürünler");
-            foreach (var product in productManager.GetAllByCategoryId(2))
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            ////Console.WriteLine("Tüm Ürünler");
+            ////foreach (var product in productManager.GetAll())
+            ////{
+            ////    Console.WriteLine(product.ProductName);
+            ////}
 
-            Console.WriteLine("Fiyatı 40 ile 100 arasında olan Ürünler");
-            foreach (var product in productManager.GetByUnitPrice(40, 100))
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            ////Console.WriteLine("CategoryId=2 olan Ürünler");
+            ////foreach (var product in productManager.GetAllByCategoryId(2))
+            ////{
+            ////    Console.WriteLine(product.ProductName);
+            ////}
+
+            ////Console.WriteLine("Fiyatı 40 ile 100 arasında olan Ürünler");
+            ////foreach (var product in productManager.GetByUnitPrice(40, 100))
+            ////{
+            ////    Console.WriteLine(product.ProductName);
+            /////}
+
             //ProductManager productManager = new ProductManager(new InMemoryProductDal());
             //foreach (var product in productManager.GetAll())
             //{
